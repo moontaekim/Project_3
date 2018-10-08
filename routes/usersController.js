@@ -11,4 +11,14 @@ router.get('/:userId', async (req, res) => {
   res.send(users)
 })
 
+router.post('/', async (req, res) => {
+  const user = await User.create(req.body)
+  res.send(user)
+})
+
+router.delete('/:userId', async (req, res) => {
+  const user = await User.findByIdAndRemove(req.params.userId)
+  res.send(user)
+})
+
 module.exports = router
