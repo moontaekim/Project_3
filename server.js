@@ -17,8 +17,7 @@ connection.on('error', (err) => {
 });
 
 
-var indexRouter = require('./routes');
-var usersRouter = require('./routes/users');
+var usersController = require('./routes/usersController');
 
 var app = express();
 
@@ -33,7 +32,6 @@ app.get('/', (req,res) => {
 })
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersController);
 
 module.exports = app;
