@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Timer from './Timer';
+import Timer from './Timer/Timer';
+import StartButton from './Timer/StartButton';
 
 export default class Challenge extends Component {
 
 state = {
-  foodChallenge: []
+  foodChallenge: [],
+  seconds: '00'
 }
 
 componentDidMount = async () => {
@@ -15,6 +17,9 @@ componentDidMount = async () => {
   console.log(response.data)
   this.setState({foodChallenge: response.data})
 }
+
+
+
   render() {
     const foodChallenge = this.state.foodChallenge
     return (
@@ -26,8 +31,15 @@ componentDidMount = async () => {
         <div>difficulty: {foodChallenge.difficulty}</div>
         <div>price: $ {foodChallenge.price}</div>
         <div>time limit: {foodChallenge.time}min</div>
-        <Timer/>
+        <div>
+
+        <Timer minutes={foodChallenge.time} seconds={this.state.seconds}/>
+        <StartButton/>
+        
+        </div>
+
       </div>
+
     )
   }
 }
