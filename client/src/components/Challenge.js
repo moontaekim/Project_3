@@ -7,8 +7,9 @@ export default class Challenge extends Component {
 
 state = {
   foodChallenge: [],
-  seconds: '00'
+  seconds: "00"
 }
+
 
 componentDidMount = async () => {
   const userId = this.props.match.params.userId
@@ -17,7 +18,6 @@ componentDidMount = async () => {
   console.log(response.data)
   this.setState({foodChallenge: response.data})
 }
-
 
 
   render() {
@@ -30,7 +30,6 @@ componentDidMount = async () => {
         <div>state: {foodChallenge.state}</div>
         <div>difficulty: {foodChallenge.difficulty}</div>
         <div>price: $ {foodChallenge.price}</div>
-        <div>time limit: {foodChallenge.time}min</div>
         <div>
 
         <Timer minutes={foodChallenge.time} seconds={this.state.seconds}/>

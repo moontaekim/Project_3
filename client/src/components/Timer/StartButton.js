@@ -4,7 +4,7 @@ export default class StartButton extends Component {
   render() {
     return (
       <div>
-               <button>Start</button>
+               <button onClick={this.props.startCountDown}>Start</button>
       </div>
     )
   }
