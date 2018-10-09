@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User } = require('../db/schema')
+const { User, FoodChallenge } = require('../db/schema')
 
 router.get('/', async (req,res) => {
   const users = await User.find()
@@ -13,7 +13,12 @@ router.get('/:userId', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const user = await User.create(req.body)
-  res.send(user)
+  const challenges = await FoodChallenge.find()
+  challenges.map( challenge => {
+    user.foodChallenges.push(challenge._id)
+  })
+  const newUser = await user.save()
+  res.send(newUser)
 })
 
 router.put('/:userId', async (req, res) => {

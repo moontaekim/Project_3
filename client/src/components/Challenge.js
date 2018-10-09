@@ -6,7 +6,9 @@ import StartButton from './Timer/StartButton';
 export default class Challenge extends Component {
 
 state = {
+  user:{1:1},
   foodChallenge: [],
+  completedChallenge: [],
   seconds: "00"
 }
 
@@ -19,6 +21,11 @@ componentDidMount = async () => {
   this.setState({foodChallenge: response.data})
 }
 
+addToComplete = () => {
+  const userId = this.props.match.params.userId
+  const complete = this.state.completedChallenge.push(userId)
+  this.setState({completedChallenge: complete})
+}
 
   render() {
     const foodChallenge = this.state.foodChallenge
@@ -36,6 +43,8 @@ componentDidMount = async () => {
         <StartButton/>
         
         </div>
+        <button onClick={this.addToComplete}>complete</button>
+        <button>failed</button>
 
       </div>
 

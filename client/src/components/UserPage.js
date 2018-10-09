@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import EditUserForm from './EditUserForm';
 
 export default class UserPage extends Component {
   state = {
     user: {},
-    editUser: false,
-    userToUpdate: {}
+    editUser: false
   }
 
   getUser = async () => {
     const userId = this.props.match.params.userId
-    console.log(userId)
     const response = await axios.get(`/api/users/${userId}`)
-    this.setState({user: response.data, userToUpdate: response.data})
+    this.setState({user: response.data})
   }
 
   componentDidMount = () => {
@@ -25,33 +22,35 @@ export default class UserPage extends Component {
     this.setState({editUser: !this.state.editUser})
   }
 
-  handleDelete = async (someId) => {
-    await axios.delete(`/api/users/${someId}`)
+  handleDelete = async (userId) => {
+    await axios.delete(`/api/users/${userId}`)
     await this.getUser()
   }
   
   handleChange = (event) => {
-    const userToUpdate = {...this.state.userToUpdate.name}
-    userToUpdate[event.target.name]= event.target.value
-    console.log(event.target.value)
-    this.setState({ userToUpdate })
+    const user = {...this.state.user.name}
+    user[event.target.name]= event.target.value
+    this.setState({ user })
   }
   
   handleSubmit = async (event) => {
     const userId = this.props.match.params.userId
     event.preventDefault()
-    await axios.put(`/api/users/${userId}`, this.state.userToUpdate)
+    await axios.put(`/api/users/${userId}`, this.state.user)
   }
 
   render() {
 
-    const editUserForm = <EditUserForm
-      user={this.state.user}
-      userToUpdate={this.state.userToUpdate}
-      onSubmit={this.handleSubmit}
-      value={this.state.userToUpdate.name} 
+    const editUserForm = 
+    <div>
+      <form onSubmit={this.handleSubmit}>
+      <input type='text' name='name' 
+      value={this.state.user.name} 
       onChange={this.handleChange} 
-    />
+      />
+      <input type='submit' value='Update User'/>
+      </form>
+    </div>
 
     const userpage = 
       <div>
@@ -60,12 +59,11 @@ export default class UserPage extends Component {
       <div>Budget: $ {this.state.user.budget}</div>
       <div>Fatness: {this.state.user.fatness}</div>
       <Link to={`/users/${this.state.user._id}/challenges`}>Food Challenges</Link>
-      <div><Link to={`/users/${this.state.user._id}/completed`}>Completed Challenges</Link></div>
+      <div>Completed Challenges: {this.state.user.completedChallenges}</div>
       </div>
 
     return (
       <div>
-        
 
         {this.state.editUser ? editUserForm : userpage}
         <button onClick={this.toggleEditUser}>

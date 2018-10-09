@@ -1,5 +1,5 @@
 const router = require('express').Router({mergeParams: true})
-const { FoodChallenge, User } = require('../db/schema')
+const { User } = require('../db/schema')
 
 router.get('/', async(req, res) => {
   const user = await User.findById(req.params.userId).populate('foodChallenges')
@@ -14,4 +14,6 @@ router.get('/:id', async(req, res) => {
   })
   res.send(foodChallenges)
 })
+
+
 module.exports = router
