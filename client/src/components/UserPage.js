@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import EditUserForm from './EditUserForm';
 
 export default class UserPage extends Component {
   state = {
     user: {},
+    editUser: false,
     userToUpdate: {}
   }
 
@@ -17,6 +19,10 @@ export default class UserPage extends Component {
 
   componentDidMount = () => {
     this.getUser()
+  }
+
+  toggleEditUser = () => {
+    this.setState({editUser: !this.state.editUser})
   }
 
   handleDelete = async (someId) => {
@@ -38,24 +44,33 @@ export default class UserPage extends Component {
   }
 
   render() {
+
+    const editUserForm = <EditUserForm
+      user={this.state.user}
+      userToUpdate={this.state.userToUpdate}
+      onSubmit={this.handleSubmit}
+      value={this.state.userToUpdate.name} 
+      onChange={this.handleChange} 
+    />
+
+    const userpage = 
+      <div>
+      <Link to="/" onClick={() => this.handleDelete(this.state.user._id)}>delete</Link>
+      <div>Name: {this.state.user.name}</div>
+      <div>Budget: $ {this.state.user.budget}</div>
+      <div>Fatness: {this.state.user.fatness}</div>
+      <Link to={`/users/${this.state.user._id}/challenges`}>Food Challenges</Link>
+      <div><Link to={`/users/${this.state.user._id}/completed`}>Completed Challenges</Link></div>
+      </div>
+
     return (
       <div>
-        <Link to="/" onClick={() => this.handleDelete(this.state.user._id)}>delete</Link>
-        <div>Name: {this.state.user.name}</div>
-        <div>Budget: $ {this.state.user.budget}</div>
-        <div>Fatness: {this.state.user.fatness}</div>
-        <Link to={`/users/${this.state.user._id}/challenges`}>Food Challenges</Link>
-        <div><Link to={`/users/${this.state.user._id}/completed`}>Completed Challenges</Link></div>
-
-        <form onSubmit={this.handleSubmit}>
-
-        <input type='text' name='name' 
-        value={this.state.userToUpdate.name} 
-        onChange={this.handleChange} 
-        />
-        <input type='submit' value='Update User'/>
         
-        </form>
+
+        {this.state.editUser ? editUserForm : userpage}
+        <button onClick={this.toggleEditUser}>
+          {this.state.editUser ? 'User Info' : 'Edit User'}
+        </button>
 
       </div>
     )
