@@ -59,11 +59,6 @@ const saved = async () => {
   userTwo.foodChallenges.push(foodchallenge._id)
   userTwo.foodChallenges.push(foodchallengeTwo._id)
 
-  user.completedChallenges.push(foodchallenge._id)
-  user.completedChallenges.push(foodchallengeTwo._id)
-  
-  userTwo.completedChallenges.push(foodchallenge._id)
-  userTwo.completedChallenges.push(foodchallengeTwo._id)
   await user.save()
   await userTwo.save()
 

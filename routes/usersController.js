@@ -16,6 +16,11 @@ router.post('/', async (req, res) => {
   res.send(user)
 })
 
+router.put('/:userId', async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true })
+  res.send(user)
+})
+
 router.delete('/:userId', async (req, res) => {
   const user = await User.findByIdAndRemove(req.params.userId)
   res.send(user)

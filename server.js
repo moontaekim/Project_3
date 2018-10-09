@@ -17,7 +17,7 @@ connection.on('error', (err) => {
 });
 
 
-var usersController = require('./routes/usersController');
+
 
 var app = express();
 
@@ -31,7 +31,16 @@ app.get('/', (req,res) => {
   res.sendFile(__dirname + '/client/build/index.html')
 })
 
+var usersController = require('./routes/usersController');
+var challengesController = require('./routes/challengesController')
+var completedController = require('./routes/completedController')
+
 
 app.use('/api/users', usersController);
+app.use(`/api/users/:userId/challenges`, challengesController)
+app.use(`/api/users/:userId/completed`, completedController)
+
+
+
 
 module.exports = app;

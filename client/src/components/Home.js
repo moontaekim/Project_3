@@ -43,6 +43,7 @@ export default class Home extends Component {
           <input type="text" name="name" value={this.state.newUser.name} onChange={this.handleChange}/>
           <input type='submit' value='Create New Fatty'/>
         </form>
+        
       </div>
     )
   }

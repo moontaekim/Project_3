@@ -23,13 +23,16 @@ export default class UserPage extends Component {
     await this.getUser()
   }
 
+
   render() {
     return (
       <div>
-        <div onClick={() => this.handleDelete(this.state.user._id)}>delete</div>
+        <Link to="/" onClick={() => this.handleDelete(this.state.user._id)}>delete</Link>
         <div>Name: {this.state.user.name}</div>
         <div>Budget: $ {this.state.user.budget}</div>
         <div>Fatness: {this.state.user.fatness}</div>
+        <Link to={`/users/${this.state.user._id}/challenges`}>Food Challenges</Link>
+        <div><Link to={`/users/${this.state.user._id}/completed`}>Completed Challenges</Link></div>
       </div>
     )
   }
