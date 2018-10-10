@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import UserInfo from './UserInfo';
+import UserCompletedChallenges from './UserCompletedChallenges';
 
 export default class UserPage extends Component {
   state = {
@@ -41,14 +43,7 @@ export default class UserPage extends Component {
   }
 
   render() {
-    
-    const completedChallengesList = this.state.completedChallenges.map((challenge, i) => {
-      return(
-        <div key={i}>
-          <div>{challenge.name}</div>
-        </div>
-      )
-    })
+
 
     const editUserForm = 
     <div>
@@ -62,14 +57,15 @@ export default class UserPage extends Component {
     </div>
 
     const userpage = 
-      <div>
-      <Link to="/" onClick={() => this.handleDelete(this.state.user._id)}>delete</Link>
-      <div>Name: {this.state.user.name}</div>
-      <div>Budget: $ {this.state.user.budget}</div>
-      <div>Fatness: {this.state.user.fatness}</div>
-      <Link to={`/users/${this.state.user._id}/challenges`}>Food Challenges</Link>
-      <div>Completed Challenges: {completedChallengesList}</div>
-      </div>
+    <div>
+    <UserInfo
+    handleDelete={this.handleDelete}
+    user={this.state.user}
+    />
+    <UserCompletedChallenges
+    completedChallenges={this.state.completedChallenges}
+    />
+    </div>
 
   
     return (
@@ -79,6 +75,7 @@ export default class UserPage extends Component {
         <button onClick={this.toggleEditUser}>
           {this.state.editUser ? 'User Info' : 'Edit User'}
         </button>
+      
       </div>
     )
   }
