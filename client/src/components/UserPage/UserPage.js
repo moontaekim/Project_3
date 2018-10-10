@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import UserInfo from './UserInfo';
 import UserCompletedChallenges from './UserCompletedChallenges';
+import EditUserForm from './EditUserForm';
 
 export default class UserPage extends Component {
   state = {
@@ -43,18 +43,12 @@ export default class UserPage extends Component {
   }
 
   render() {
-
-
     const editUserForm = 
-    <div>
-      <form onSubmit={this.handleSubmit}>
-      <input type='text' name='name' 
-      value={this.state.user.name} 
-      onChange={this.handleChange} 
-      />
-      <input type='submit' value='Update User'/>
-      </form>
-    </div>
+    <EditUserForm
+    handleSubmit={this.handleSubmit}
+    user={this.state.user}
+    handleChange={this.handleChange}
+    />
 
     const userpage = 
     <div>
@@ -66,16 +60,13 @@ export default class UserPage extends Component {
     completedChallenges={this.state.completedChallenges}
     />
     </div>
-
   
     return (
       <div>
-
         {this.state.editUser ? editUserForm : userpage}
         <button onClick={this.toggleEditUser}>
           {this.state.editUser ? 'User Info' : 'Edit User'}
         </button>
-      
       </div>
     )
   }
