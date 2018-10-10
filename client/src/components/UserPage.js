@@ -42,9 +42,9 @@ export default class UserPage extends Component {
 
   render() {
     
-    const completedChallengesList = this.state.completedChallenges.map((challenge) => {
+    const completedChallengesList = this.state.completedChallenges.map((challenge, i) => {
       return(
-        <div>
+        <div key={i}>
           <div>{challenge.name}</div>
         </div>
       )

@@ -11,21 +11,19 @@ state = {
   seconds: "00"
 }
 
-
 componentDidMount = async () => {
-  const userId = this.props.match.params.userId
+  // const userId = this.props.match.params.userId
   const challengeId = this.props.match.params.id
-  const response = await axios.get(`/api/users/${userId}/challenges/${challengeId}`)
+  const response = await axios.get(`/api/challenges/${challengeId}`)
+  console.log(response.data)
+  // const response = await axios.get(`/api/users/${userId}/challenges/${challengeId}`)
   this.setState({foodChallenge: response.data})
 }
 
 addToComplete = async () => {
   const userId = this.props.match.params.userId
   const challengeId = this.props.match.params.id
-  console.log(challengeId)
-  const response = await axios.post(`/api/users/${userId}/challenges/${challengeId}`, challengeId)
-  console.log(response)
-  // need an axios call and post
+  await axios.post(`/api/users/${userId}/challenges/${challengeId}`, challengeId)
 }
 
   render() {

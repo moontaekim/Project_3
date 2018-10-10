@@ -8,8 +8,7 @@ export default class ChallengeList extends Component {
   }
 
   componentDidMount = async () => {
-    const userId = this.props.match.params.userId
-    const response = await axios.get(`/api/users/${userId}/challenges`)
+    const response = await axios.get(`/api/challenges`)
     this.setState({foodChallenges: response.data})
   }
 

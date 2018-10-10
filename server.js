@@ -33,10 +33,12 @@ app.get('/', (req,res) => {
 
 var usersController = require('./routes/usersController');
 var challengesController = require('./routes/challengesController')
+var userChallengesController = require('./routes/userChallengesController')
 
 
 app.use('/api/users', usersController);
-app.use(`/api/users/:userId/challenges`, challengesController)
+app.use('/api/challenges', challengesController)
+app.use(`/api/users/:userId/challenges`, userChallengesController)
 
 
 
