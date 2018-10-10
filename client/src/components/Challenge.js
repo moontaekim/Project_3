@@ -22,7 +22,8 @@ componentDidMount = async () => {
 addToComplete = async () => {
   const userId = this.props.match.params.userId
   const challengeId = this.props.match.params.id
-  const response = await axios.post(`/api/users/${userId}`, challengeId)
+  console.log(challengeId)
+  const response = await axios.post(`/api/users/${userId}/challenges/${challengeId}`, challengeId)
   console.log(response)
   // need an axios call and post
 }

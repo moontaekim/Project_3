@@ -68,7 +68,7 @@ export default class UserPage extends Component {
       <div>Budget: $ {this.state.user.budget}</div>
       <div>Fatness: {this.state.user.fatness}</div>
       <Link to={`/users/${this.state.user._id}/challenges`}>Food Challenges</Link>
-      {completedChallengesList}
+      <div>Completed Challenges: {completedChallengesList}</div>
       </div>
 
   
