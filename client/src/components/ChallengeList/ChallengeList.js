@@ -38,11 +38,18 @@ export default class ChallengeList extends Component {
     this.getFoodChallenges()
   }
 
+  handleDelete = async (challengeId) => {
+    console.log(challengeId)
+    await axios.delete(`/api/challenges/${challengeId}`)
+    await this.getFoodChallenges()
+  }
+
   render() {
     const foodChallengeList = this.state.foodChallenges.map((foodChallenge, i) => {
       return (
         <div key={i}>
           <Link to={`/users/${this.props.match.params.userId}/challenges/${foodChallenge._id}`}>name: {foodChallenge.name}</Link>
+          <button onClick={() => this.handleDelete(foodChallenge._id)}>delete</button>
         </div>
       )
     })
