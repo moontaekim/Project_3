@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import UserNameList from './UserNameList';
+import CreateUserForm from './CreateUserForm';
 
 export default class Home extends Component {
   state = {
@@ -36,22 +37,17 @@ export default class Home extends Component {
   }
 
   render() {
-    const usersList = this.state.users.map((user, i) => {
-      return(
-        <div key={i}>
-          <Link to={`/users/${user._id}`}>name: {user.name}</Link>
-        </div>
-      )
-    })
+
     return (
       <div>
-        {usersList}
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="name" value={this.state.newUser.name} onChange={this.handleChange}/>
-
-          <input type='submit' value='Create New Fatty'/>
-        </form>
-        
+        <UserNameList
+          users={this.state.users}
+          />
+        <CreateUserForm
+          handleSubmit={this.handleSubmit}
+          newUser={this.state.newUser}
+          handleChange={this.handleChange}
+        />
       </div>
     )
   }
