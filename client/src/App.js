@@ -4,7 +4,7 @@ import Home from './components/HomePage/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import UserPage from './components/UserPage/UserPage';
 import ChallengeList from './components/ChallengeList/ChallengeList';
-import Challenge from './components/Challenge';
+import Challenge from './components/ChallengeComponent/Challenge';
 
 
 
