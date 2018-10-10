@@ -23,7 +23,6 @@ export default class Home extends Component {
   handleChange = (event) => {
     const newUser = {...this.state.newUser}
     newUser[event.target.name]= event.target.value
-    this.state.newUser.foodChallenges = this.state.users[event.foodchallenge]
     this.setState({ newUser })
     console.log(newUser)
   }

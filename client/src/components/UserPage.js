@@ -5,32 +5,19 @@ import { Link } from 'react-router-dom'
 export default class UserPage extends Component {
   state = {
     user: {},
+    completedChallenges: [],
     editUser: false
   }
 
   getUser = async () => {
     const userId = this.props.match.params.userId
     const response = await axios.get(`/api/users/${userId}`)
-    this.setState({user: response.data})
-  }
-
-  getCompletedChallenges = async () => {
-    const userId = this.props.match.params.userId
-    //completedChallenges is an array
-    const challengeId = this.state.user.completedChallenges
-    // .map((challenge , i) => {
-    //   return challenge[i]
-    // })
-    const response = await axios.get(`/api/users/${userId}/challenges/${challengeId}`)
-    console.log(response)
-    console.log(challengeId)
-
+    this.setState({user: response.data, completedChallenges: response.data.completedChallenges})
   }
 
   componentDidMount = () => {
     this.getUser()
-    this.getCompletedChallenges()
-  }
+    }
 
   toggleEditUser = () => {
     this.setState({editUser: !this.state.editUser})
@@ -54,6 +41,14 @@ export default class UserPage extends Component {
   }
 
   render() {
+    
+    const completedChallengesList = this.state.completedChallenges.map((challenge) => {
+      return(
+        <div>
+          <div>{challenge.name}</div>
+        </div>
+      )
+    })
 
     const editUserForm = 
     <div>
@@ -73,9 +68,10 @@ export default class UserPage extends Component {
       <div>Budget: $ {this.state.user.budget}</div>
       <div>Fatness: {this.state.user.fatness}</div>
       <Link to={`/users/${this.state.user._id}/challenges`}>Food Challenges</Link>
-      <div>Completed Challenges: {this.state.user.completedChallenges}</div>
+      {completedChallengesList}
       </div>
 
+  
     return (
       <div>
 
@@ -83,7 +79,6 @@ export default class UserPage extends Component {
         <button onClick={this.toggleEditUser}>
           {this.state.editUser ? 'User Info' : 'Edit User'}
         </button>
-
       </div>
     )
   }

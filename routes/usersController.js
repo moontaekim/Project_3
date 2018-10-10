@@ -7,7 +7,7 @@ router.get('/', async (req,res) => {
 })
 
 router.get('/:userId', async (req, res) => {
-  const users = await User.findById(req.params.userId)
+  const users = await User.findById(req.params.userId).populate('completedChallenges')
   res.send(users)
 })
 
