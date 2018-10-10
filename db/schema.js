@@ -15,6 +15,7 @@ const UserSchema = new Schema({
 const FoodChallengeSchema = new Schema({
   name: String,
   location: String,
+  img: String,
   address: String,
   state: String,
   difficulty: Number,

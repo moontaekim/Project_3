@@ -20,4 +20,9 @@ router.post('/', async (req, res) => {
   res.send(foodChallenges)
 })
 
+router.delete('/:id', async (req, res) => {
+  const foodchallenge = await FoodChallenge.findByIdAndRemove(req.params.id)
+  res.send(foodchallenge)
+})
+
 module.exports = router
