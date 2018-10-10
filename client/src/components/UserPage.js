@@ -14,8 +14,22 @@ export default class UserPage extends Component {
     this.setState({user: response.data})
   }
 
+  getCompletedChallenges = async () => {
+    const userId = this.props.match.params.userId
+    //completedChallenges is an array
+    const challengeId = this.state.user.completedChallenges
+    // .map((challenge , i) => {
+    //   return challenge[i]
+    // })
+    const response = await axios.get(`/api/users/${userId}/challenges/${challengeId}`)
+    console.log(response)
+    console.log(challengeId)
+
+  }
+
   componentDidMount = () => {
     this.getUser()
+    this.getCompletedChallenges()
   }
 
   toggleEditUser = () => {

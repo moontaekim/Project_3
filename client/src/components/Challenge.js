@@ -6,7 +6,6 @@ import StartButton from './Timer/StartButton';
 export default class Challenge extends Component {
 
 state = {
-  user:{1:1},
   foodChallenge: [],
   completedChallenge: [],
   seconds: "00"
@@ -17,14 +16,15 @@ componentDidMount = async () => {
   const userId = this.props.match.params.userId
   const challengeId = this.props.match.params.id
   const response = await axios.get(`/api/users/${userId}/challenges/${challengeId}`)
-  console.log(response.data)
   this.setState({foodChallenge: response.data})
 }
 
-addToComplete = () => {
+addToComplete = async () => {
   const userId = this.props.match.params.userId
-  const complete = this.state.completedChallenge.push(userId)
-  this.setState({completedChallenge: complete})
+  const challengeId = this.props.match.params.id
+  const response = await axios.post(`/api/users/${userId}`, challengeId)
+  console.log(response)
+  // need an axios call and post
 }
 
   render() {

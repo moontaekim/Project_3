@@ -1,0 +1,1 @@
+// /:id => Challenges.findById(req.params.id)

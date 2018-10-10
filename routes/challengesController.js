@@ -1,5 +1,5 @@
 const router = require('express').Router({mergeParams: true})
-const { User } = require('../db/schema')
+const { User, FoodChallenge } = require('../db/schema')
 
 router.get('/', async(req, res) => {
   const user = await User.findById(req.params.userId).populate('foodChallenges')
@@ -13,6 +13,15 @@ router.get('/:id', async(req, res) => {
     return foodChallenge._id == req.params.id
   })
   res.send(foodChallenges)
+})
+
+// post route needed
+router.post('/:id', async(req, res) => {
+  const user = await User.findById(req.params.userId)
+  const completedChallenge = await FoodChallenge.findById(req.params.id)
+  user.completedChallenges.push(completedChallenge)
+  const updatedUser = await user.save()
+  res.send(updatedUser)
 })
 
 
