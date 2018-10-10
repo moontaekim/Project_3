@@ -12,11 +12,9 @@ state = {
 }
 
 componentDidMount = async () => {
-  // const userId = this.props.match.params.userId
   const challengeId = this.props.match.params.id
   const response = await axios.get(`/api/challenges/${challengeId}`)
   console.log(response.data)
-  // const response = await axios.get(`/api/users/${userId}/challenges/${challengeId}`)
   this.setState({foodChallenge: response.data})
 }
 
