@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './components/HomePage/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import UserPage from './components/UserPage';
+import UserPage from './components/UserPage/UserPage';
 import ChallengeList from './components/ChallengeList';
 import Challenge from './components/Challenge';
 
