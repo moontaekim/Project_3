@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import UserNameList from './UserNameList';
 import CreateUserForm from './CreateUserForm';
-import { Button } from 'semantic-ui-react'
 
 
 
