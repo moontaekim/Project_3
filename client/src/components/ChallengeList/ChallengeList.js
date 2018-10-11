@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import NewChallengeForm from './NewChallengeForm';
 import ChallengeInfo from './ChallengeInfo';
+import { Button } from 'semantic-ui-react'
+import styled from 'styled-components'
+
+const StyledButton = styled(Button)`
+&&&{
+  margin-top:30px;
+  background:white;
+  box-shadow:3px 4px 1px black;
+  :hover{
+    box-shadow: 0 0 0 white;
+  }
+}
+`
 
 export default class ChallengeList extends Component {
   state = {
@@ -70,9 +83,9 @@ export default class ChallengeList extends Component {
     return (
       <div>
         {this.state.createChallenge ? newChallengeForm : foodChallengeList}
-        <button onClick={this.toggleCreateChallenge}>
+        <StyledButton circular onClick={this.toggleCreateChallenge}>
           {this.state.createChallenge ? 'All Challenges' : 'Create Challenge'}
-        </button>
+        </StyledButton>
       </div>
     )
   }

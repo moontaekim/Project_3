@@ -15,6 +15,16 @@ const StyledLink = styled(Link)`
     text-shadow: 2px 2px 2px white;
   }
 `
+const StyledButton = styled(Button)`
+&&&{
+  margin-top:30px;
+  background:white;
+  box-shadow:3px 4px 1px black;
+  :hover{
+    box-shadow: 0 0 0 white;
+  }
+}
+`
 
 export default class ChallengeInfo extends Component {
   render() {
@@ -22,14 +32,13 @@ export default class ChallengeInfo extends Component {
       return (
         <div key={i}>
           <StyledLink to={`/users/${this.props.userId}/challenges/${foodChallenge._id}`}>{foodChallenge.name}</StyledLink>
-          {/* <div><Button onClick={() => this.props.handleDelete(foodChallenge._id)}>delete</Button></div> */}
         </div>
       )
     })
     return (
       <div>
         {foodChallengeList}
-        <button onClick={() => { this.props.goBackHome() }}> go back </button>
+        <StyledButton circular onClick={() => { this.props.goBackHome() }}> go back </StyledButton>
       </div>
     )
   }

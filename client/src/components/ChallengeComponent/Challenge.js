@@ -3,6 +3,24 @@ import axios from 'axios'
 import Timer from './Timer/Timer';
 import StartButton from './Timer/StartButton';
 import ChallengeDetails from './ChallengeDetails';
+import { Button, Image } from 'semantic-ui-react'
+import styled from 'styled-components'
+
+const StyledButton = styled(Button)`
+&&&{
+  margin-top:30px;
+  background:white;
+  box-shadow:3px 4px 1px black;
+  :hover{
+    box-shadow: 0 0 0 white;
+  }
+}
+`
+const StyledImage = styled(Image)`
+  margin:auto;
+  border: 3px solid white;
+`
+
 
 export default class Challenge extends Component {
 
@@ -33,14 +51,13 @@ goBackHome = () => {
 }
 handleDelete = async (challengeId) => {
   await axios.delete(`/api/challenges/${challengeId}`)
-  // await this.getFoodChallenges()
   this.goBackHome()
 }
 
 render() {
   return (
     <div>
-      <img src={this.state.foodChallenge.img} alt="vortex"/>
+      <StyledImage size="medium" circular src={this.state.foodChallenge.img} alt="foodimage"/>
       <ChallengeDetails
         foodChallenge={this.state.foodChallenge}
         addToComplete={this.addToComplete}
@@ -49,8 +66,8 @@ render() {
         foodChallenge={this.state.foodChallenge}
         seconds={this.state.seconds} />
       <StartButton/>
-      <button onClick={() => { this.goBackHome() }}> go back </button>
-      <button onClick={() => this.handleDelete(this.state.foodChallenge._id)}>delete</button>
+      <StyledButton circular onClick={() => { this.goBackHome() }}> go back </StyledButton>
+      <StyledButton circular onClick={() => this.handleDelete(this.state.foodChallenge._id)}>delete</StyledButton>
     </div>
   )
 }
