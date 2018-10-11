@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-
 const StyledUserList = styled(Link)`
   text-decoration:none;
   font-size: 30px;
@@ -15,7 +14,6 @@ const StyledUserList = styled(Link)`
     text-shadow:2px 1px 2.5px white;
   }
 `
-
 
 export default class UserNameList extends Component {
   render() {

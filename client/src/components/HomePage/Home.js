@@ -5,7 +5,6 @@ import CreateUserForm from './CreateUserForm';
 import styled from 'styled-components'
 import { Button } from 'semantic-ui-react'
 
-
 const StyledButton = styled(Button)`
 &&&{
   margin-top:30px;
@@ -20,14 +19,6 @@ const StyledButton = styled(Button)`
 export default class Home extends Component {
   state = {
     users: [],
-    // newUser: {
-    //   foodChallenges: [],
-    //   completedChallenges: [],
-    //   name: '',
-    //   budget: 500,
-    //   fatness: 0,
-    //   img: ''
-    // },
     createUser: false
   }
 
