@@ -28,7 +28,10 @@ export default class Challenge extends Component {
   render() {
     return (
       <div>
-        <ChallengeDetails foodChallenge={this.state.foodChallenge}/>
+        <ChallengeDetails 
+        foodChallenge={this.state.foodChallenge}
+        addToComplete={this.addToComplete}
+        />
         <Timer foodChallenge={this.state.foodChallenge} seconds={this.state.seconds}/>
         <StartButton />
       </div>

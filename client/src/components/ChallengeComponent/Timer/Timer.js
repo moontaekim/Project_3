@@ -5,7 +5,7 @@ export default class Timer extends Component {
   render() {
     return (
       <div>
-        <h1>{this.props.foodChallenge.minutes}:{this.props.seconds} </h1>
+        <h1>{this.props.foodChallenge.time}:{this.props.seconds} </h1>
       </div>
     )
   }

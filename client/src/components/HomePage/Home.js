@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import UserNameList from './UserNameList';
 import CreateUserForm from './CreateUserForm';
+import { Button } from 'semantic-ui-react'
+
 
 
 export default class Home extends Component {
@@ -49,6 +51,7 @@ export default class Home extends Component {
           newUser={this.state.newUser}
           handleChange={this.handleChange}
         />
+        <Button>Click me</Button>
       </div>
     )
   }
