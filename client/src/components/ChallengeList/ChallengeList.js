@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import NewChallengeForm from './NewChallengeForm';
+import ChallengeInfo from './ChallengeInfo';
 
 export default class ChallengeList extends Component {
   state = {
@@ -24,7 +25,7 @@ export default class ChallengeList extends Component {
   }
 
   toggleCreateChallenge = () => {
-    this.setState({createChallenge: !this.state.createChallenge})
+    this.setState({ createChallenge: !this.state.createChallenge })
   }
 
   getFoodChallenges = async () => {
@@ -55,31 +56,28 @@ export default class ChallengeList extends Component {
   }
 
   render() {
-    const foodChallengeList = this.state.foodChallenges.map((foodChallenge, i) => {
-      return (
-        <div key={i}>
-          <Link to={`/users/${this.props.match.params.userId}/challenges/${foodChallenge._id}`}>name: {foodChallenge.name}</Link>
-          <button onClick={() => this.handleDelete(foodChallenge._id)}>delete</button>
-        </div>
-      )
-    })
 
-    const newChallengeForm = 
+
+    const foodChallengeList = <ChallengeInfo
+      userId={this.props.match.params.userId}
+      foodChallenges={this.state.foodChallenges}
+      handleDelete={this.handleDelete}
+      goBackHome={this.goBackHome}
+    />
+
+    const newChallengeForm =
       <NewChallengeForm
         handleSubmit={this.handleSubmit}
         newChallenge={this.state.newChallenge}
         handleChange={this.handleChange}
-          /> 
+      />
 
     return (
       <div>
-        {/* {foodChallengeList} */}
-        {this.state.createChallenge ? newChallengeForm : foodChallengeList }
+        {this.state.createChallenge ? newChallengeForm : foodChallengeList}
         <button onClick={this.toggleCreateChallenge}>
           {this.state.createChallenge ? 'All Challenges' : 'Create Challenge'}
         </button>
-        
-        <button onClick={() => { this.goBackHome() }}> go back </button>
       </div>
     )
   }

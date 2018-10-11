@@ -10,6 +10,8 @@ export default class UserInfo extends Component {
         <div>Budget: $ {this.props.user.budget}</div>
         <div>Fatness: {this.props.user.fatness}</div>
         <Link to={`/users/${this.props.user._id}/challenges`}>Food Challenges</Link>
+        <button onClick={() => {this.props.goBackHome()}}> go back </button>
+
       </div>
     )
   }

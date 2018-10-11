@@ -57,6 +57,7 @@ export default class UserPage extends Component {
     <UserInfo
     handleDelete={this.handleDelete}
     user={this.state.user}
+    goBackHome={this.state.goBackHome}
     />
     <UserCompletedChallenges
     completedChallenges={this.state.completedChallenges}
@@ -69,7 +70,6 @@ export default class UserPage extends Component {
         <button onClick={this.toggleEditUser}>
           {this.state.editUser ? 'User Info' : 'Edit User'}
         </button>
-        <button onClick={() => {this.goBackHome()}}> go back </button>
       </div>
     )
   }
