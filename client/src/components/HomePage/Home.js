@@ -5,6 +5,7 @@ import CreateUserForm from './CreateUserForm';
 import styled from 'styled-components'
 import { Button } from 'semantic-ui-react'
 
+
 const StyledButton = styled(Button)`
 &&&{
   background:white;
@@ -14,7 +15,6 @@ const StyledButton = styled(Button)`
   }
 }
 `
-
 
 export default class Home extends Component {
   state = {
@@ -32,47 +32,44 @@ export default class Home extends Component {
 
   componentDidMount = async () => {
     const response = await axios.get('/api/users')
-    this.setState({users: response.data})
+    this.setState({ users: response.data })
   }
 
   toggleCreateUser = () => {
-    this.setState({createUser: !this.state.createUser})
+    this.setState({ createUser: !this.state.createUser })
   }
 
   handleChange = (event) => {
-    const newUser = {...this.state.newUser}
-    newUser[event.target.name]= event.target.value
+    const newUser = { ...this.state.newUser }
+    newUser[event.target.name] = event.target.value
     this.setState({ newUser })
-    console.log(newUser)
   }
 
-  handleSubmit = async (event) => {
-    event.preventDefault()
-    const response = await axios.post('/api/users', this.state.newUser)
+  addUser = async (newUser) => {
+    const response = await axios.post('/api/users', newUser)
     const users = [...this.state.users]
     users.push(response.data)
-    this.setState({users})
+    this.setState({ users })
   }
 
   render() {
-    const userNameList =         
-    <UserNameList
-    users={this.state.users}
-    />
+    const userNameList =
+      <UserNameList
+        users={this.state.users}
+        toggleCreateUser={this.toggleCreateUser}
+      />
 
     const createUserForm =
-    <CreateUserForm
-    handleSubmit={this.handleSubmit}
-    newUser={this.state.newUser}
-    handleChange={this.handleChange}
-    toggleCreateUser={this.toggleCreateUser}
-  />
+      <CreateUserForm
+        addUser={this.addUser}
+        toggleCreateUser={this.toggleCreateUser}
+      />
 
     return (
       <div>
         {this.state.createUser ? createUserForm : userNameList}
         <StyledButton circular onClick={this.toggleCreateUser}>
-        {this.state.createUser ? 'Users' : 'Create User'}
+          {this.state.createUser ? 'Go Back' : 'Create User'}
         </StyledButton>
       </div>
     )

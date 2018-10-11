@@ -6,7 +6,6 @@ import UserPage from './components/UserPage/UserPage';
 import ChallengeList from './components/ChallengeList/ChallengeList';
 import Challenge from './components/ChallengeComponent/Challenge';
 import styled from 'styled-components'
-import {Header} from 'semantic-ui-react'
 
 const StyledApp = styled.div`
   text-align:center;
