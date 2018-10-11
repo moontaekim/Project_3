@@ -44,10 +44,7 @@ export default class ChallengeList extends Component {
     this.getFoodChallenges()
   }
 
-  handleDelete = async (challengeId) => {
-    await axios.delete(`/api/challenges/${challengeId}`)
-    await this.getFoodChallenges()
-  }
+ 
   goBackHome = () => {
     const userId = this.props.match.params.userId
     this.props.history.push(`/users/${userId}`)

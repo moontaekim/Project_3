@@ -31,7 +31,11 @@ goBackHome = () => {
   const userId = this.props.match.params.userId
   this.props.history.push(`/users/${userId}/challenges`)
 }
-
+handleDelete = async (challengeId) => {
+  await axios.delete(`/api/challenges/${challengeId}`)
+  // await this.getFoodChallenges()
+  this.goBackHome()
+}
 
 render() {
   return (
@@ -46,6 +50,7 @@ render() {
         seconds={this.state.seconds} />
       <StartButton/>
       <button onClick={() => { this.goBackHome() }}> go back </button>
+      <button onClick={() => this.handleDelete(this.state.foodChallenge._id)}>delete</button>
     </div>
   )
 }
