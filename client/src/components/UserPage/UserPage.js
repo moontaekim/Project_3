@@ -4,6 +4,8 @@ import UserInfo from './UserInfo';
 import UserCompletedChallenges from './UserCompletedChallenges';
 import EditUserForm from './EditUserForm';
 import styled from 'styled-components'
+import { Container } from 'semantic-ui-react'
+
 
 
 export default class UserPage extends Component {

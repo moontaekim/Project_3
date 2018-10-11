@@ -4,6 +4,16 @@ import styled from 'styled-components'
 
 const StyledUserList = styled(Link)`
   text-decoration:none;
+  font-size: 30px;
+  font-family: 'Modak',cursive;
+  color: black;
+  line-height: 50px;
+  text-shadow:2px 1px 2.5px white;
+  :hover{
+    color:white;
+    text-shadow:2px 1px 2.5px black;
+
+  }
 `
 
 export default class UserNameList extends Component {

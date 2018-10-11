@@ -6,7 +6,7 @@ export default class CreateUserForm extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit}>
           <input type="text" name="name" value={this.props.newUser.name} onChange={this.props.handleChange}/>
-          <input type='submit' value='Create New Fatty'/>
+          <input type='submit' onClick={this.props.toggleCreateUser} value='Create New Fatty'/>
         </form>
       </div>
     )

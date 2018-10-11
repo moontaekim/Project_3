@@ -6,6 +6,7 @@ import UserPage from './components/UserPage/UserPage';
 import ChallengeList from './components/ChallengeList/ChallengeList';
 import Challenge from './components/ChallengeComponent/Challenge';
 import styled from 'styled-components'
+import {Header} from 'semantic-ui-react'
 
 const StyledApp = styled.div`
   text-align:center;
@@ -14,8 +15,12 @@ const StyledApp = styled.div`
 `
 const StyledHeader = styled.div`
   padding-top:100px;
-  font-size: 60px;
+  font-size: 70px;
   font-family: 'Modak', cursive;
+  text-shadow: 3px 3px 3.5px white;
+`
+const StyledPageFormat = styled.div`
+  margin-top:100px;
 `
 
 
@@ -24,6 +29,7 @@ class App extends Component {
     return (
       <StyledApp>
         <StyledHeader>Fat Camp</StyledHeader>
+        <StyledPageFormat>
       <Router>
         <Switch>
           <Route exact path='/' component={Home} />
@@ -33,6 +39,7 @@ class App extends Component {
           <Route exact path='/users/:userId/challenges/:id' component={Challenge} />
         </Switch>
       </Router>
+        </StyledPageFormat>  
       </StyledApp>
     );
   }

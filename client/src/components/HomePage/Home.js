@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import UserNameList from './UserNameList';
 import CreateUserForm from './CreateUserForm';
-
+import styled from 'styled-components'
 
 
 export default class Home extends Component {
@@ -15,12 +15,17 @@ export default class Home extends Component {
       budget: 500,
       fatness: 0,
       img: ''
-    }
+    },
+    createUser: false
   }
 
   componentDidMount = async () => {
     const response = await axios.get('/api/users')
     this.setState({users: response.data})
+  }
+
+  toggleCreateUser = () => {
+    this.setState({createUser: !this.state.createUser})
   }
 
   handleChange = (event) => {
@@ -39,17 +44,25 @@ export default class Home extends Component {
   }
 
   render() {
+    const userNameList =         
+    <UserNameList
+    users={this.state.users}
+    />
+
+    const createUserForm =
+    <CreateUserForm
+    handleSubmit={this.handleSubmit}
+    newUser={this.state.newUser}
+    handleChange={this.handleChange}
+    toggleCreateUser={this.toggleCreateUser}
+  />
 
     return (
       <div>
-        <UserNameList
-          users={this.state.users}
-          />
-        <CreateUserForm
-          handleSubmit={this.handleSubmit}
-          newUser={this.state.newUser}
-          handleChange={this.handleChange}
-        />
+        {this.state.createUser ? createUserForm : userNameList}
+        <button onClick={this.toggleCreateUser}>
+        {this.state.createUser ? 'Users' : 'Create User'}
+        </button>
       </div>
     )
   }
