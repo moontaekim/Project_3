@@ -36,6 +36,7 @@ goBackHome = () => {
 render() {
   return (
     <div>
+      <img src={this.state.foodChallenge.img} alt="vortex"/>
       <ChallengeDetails
         foodChallenge={this.state.foodChallenge}
         addToComplete={this.addToComplete}
