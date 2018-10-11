@@ -6,11 +6,11 @@ export default class ChallengeDetails extends Component {
     return (
       <div>
         <div>{foodChallenge.name}</div>
-        <div>location: {foodChallenge.location}</div>
-        <div>address: {foodChallenge.address}</div>
-        <div>state: {foodChallenge.state}</div>
-        <div>difficulty: {foodChallenge.difficulty}</div>
-        <div>price: $ {foodChallenge.price}</div>
+        <div>Location: {foodChallenge.location}</div>
+        <div>Address: {foodChallenge.address}</div>
+        <div>State: {foodChallenge.state}</div>
+        <div>Fatness Points: {foodChallenge.fatness_points}</div>
+        <div>Price: $ {foodChallenge.price}</div>
         <button onClick={this.props.addToComplete}>complete</button>
         <button>failed</button>
       </div>

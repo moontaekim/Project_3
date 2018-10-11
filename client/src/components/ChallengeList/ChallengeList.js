@@ -9,7 +9,7 @@ export default class ChallengeList extends Component {
     foodChallenges: [],
     newChallenge: {
       address: '',
-      difficulty: '',
+      fatness_points: '',
       location: '',
       name: '',
       price: '',

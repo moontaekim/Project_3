@@ -18,7 +18,7 @@ const FoodChallengeSchema = new Schema({
   img: String,
   address: String,
   state: String,
-  difficulty: Number,
+  fatness_points: Number,
   price: Number,
   time: Number
 })

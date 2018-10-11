@@ -30,7 +30,7 @@ const vortex = new FoodChallenge({
   address: "438 Moreland Ave NE",
   img:'https://www.foodchallenges.com/wp-content/uploads/2015/12/360-Vortexs-Quadruple-Bypass-Challenge-240x146.jpg',
   state: 'GA',
-  difficulty: 3,
+  fatness_points: 3,
   price: 80,
   time: 30
 })
@@ -41,7 +41,7 @@ const bigPie = new FoodChallenge({
   address: '2090 Baker Rd, Ste A-103',
   img:'https://www.foodchallenges.com/wp-content/uploads/2014/05/359-Big-Pie-In-Skys-Carnivore-Challenge-240x173.jpg',
   state: 'GA',
-  difficulty: 2,
+  fatness_points: 2,
   price: 50,
   time: 60
 })
@@ -52,7 +52,7 @@ const screamNuts = new FoodChallenge({
   address: '5950 North Point Pkwy',
   img:'https://www.foodchallenges.com/wp-content/uploads/2017/12/donuts-e1512756735519.jpg',
   state: 'GA',
-  difficulty: 5,
+  fatness_points: 5,
   price: 48,
   time: 30
 })
@@ -63,7 +63,7 @@ const totcho = new FoodChallenge({
   address: '1144 Piedmont Ave NE',
   img:'https://www.foodchallenges.com/wp-content/uploads/2017/08/The-Nooks-Macho-Tatcho-Challenge-e1504149950238.jpg',
   state: 'GA',
-  difficulty: 3,
+  fatness_points: 3,
   price: 35,
   time: 90
 })
@@ -74,7 +74,7 @@ const bigBurrito = new FoodChallenge({
   address: '107 Market Center',
   img:'https://www.foodchallenges.com/wp-content/uploads/2015/06/casa-bariachi-240x180.jpg',
   state: 'GA',
-  difficulty: 3,
+  fatness_points: 3,
   price: 12,
   time: 20
 })
@@ -85,7 +85,7 @@ const ramen = new FoodChallenge({
   address: '2790 Lawrenceville-Suwanee Rd, Ste #140',
   img:'https://www.foodchallenges.com/wp-content/uploads/2014/05/Umaido-240x179.jpg',
   state: 'GA',
-  difficulty: 2,
+  fatness_points: 2,
   price: 20,
   time: 15
 })
