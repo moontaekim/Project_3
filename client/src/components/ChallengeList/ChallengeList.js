@@ -36,6 +36,12 @@ export default class ChallengeList extends Component {
     await this.getFoodChallenges()
   }
 
+  goBackHome = () => {
+    const userId = this.props.match.params.userId
+    this.props.history.push(`/users/${userId}`)
+  }
+
+
   toggleCreateChallenge = () => {
     this.setState({ createChallenge: !this.state.createChallenge })
   }
@@ -55,13 +61,10 @@ export default class ChallengeList extends Component {
     event.preventDefault()
     await axios.post('/api/challenges', this.state.newChallenge)
     this.getFoodChallenges()
+    this.toggleCreateChallenge()
   }
 
  
-  goBackHome = () => {
-    const userId = this.props.match.params.userId
-    this.props.history.push(`/users/${userId}`)
-  }
 
   render() {
 

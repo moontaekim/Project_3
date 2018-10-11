@@ -33,6 +33,10 @@ export default class UserPage extends Component {
     this.getUser()
     }
 
+  goBackHome = () => {
+    this.props.history.push(`/users`)
+    }
+
   toggleEditUser = () => {
     this.setState({editUser: !this.state.editUser})
   }
@@ -52,10 +56,9 @@ export default class UserPage extends Component {
     const userId = this.props.match.params.userId
     event.preventDefault()
     await axios.put(`/api/users/${userId}`, this.state.user)
+    this.goBackHome()
   }
-  goBackHome = () => {
-    this.props.history.push(`/users`)
-  }
+ 
   render() {
 
     const fatness = this.state.completedChallenges.map((challenge) => challenge.fatness_points).reduce((acc, curVal) => acc += curVal, 0)
