@@ -9,32 +9,43 @@ export default class Challenge extends Component {
   state = {
     foodChallenge: [],
     completedChallenge: [],
-    seconds: "00"
+    seconds: "00",
+    minutes: ''
   }
 
-  componentDidMount = async () => {
-    const challengeId = this.props.match.params.id
-    const response = await axios.get(`/api/challenges/${challengeId}`)
-    console.log(response.data)
-    this.setState({ foodChallenge: response.data })
-  }
 
-  addToComplete = async () => {
-    const userId = this.props.match.params.userId
-    const challengeId = this.props.match.params.id
-    await axios.post(`/api/users/${userId}/challenges/${challengeId}`, challengeId)
-  }
+componentDidMount = async () => {
+  const challengeId = this.props.match.params.id
+  const response = await axios.get(`/api/challenges/${challengeId}`)
+  console.log(response.data)
+  this.setState({ foodChallenge: response.data, minutes: response.data.time })
+}
 
-  render() {
-    return (
-      <div>
-        <ChallengeDetails 
+addToComplete = async () => {
+  const userId = this.props.match.params.userId
+  const challengeId = this.props.match.params.id
+  await axios.post(`/api/users/${userId}/challenges/${challengeId}`, challengeId)
+}
+
+goBackHome = () => {
+  const userId = this.props.match.params.userId
+  this.props.history.push(`/users/${userId}/challenges`)
+}
+
+
+render() {
+  return (
+    <div>
+      <ChallengeDetails
         foodChallenge={this.state.foodChallenge}
         addToComplete={this.addToComplete}
-        />
-        <Timer foodChallenge={this.state.foodChallenge} seconds={this.state.seconds}/>
-        <StartButton />
-      </div>
-    )
-  }
+      />
+      <Timer
+        foodChallenge={this.state.foodChallenge}
+        seconds={this.state.seconds} />
+      <StartButton/>
+      <button onClick={() => { this.goBackHome() }}> go back </button>
+    </div>
+  )
+}
 }

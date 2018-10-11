@@ -51,7 +51,6 @@ export default class Home extends Component {
           newUser={this.state.newUser}
           handleChange={this.handleChange}
         />
-        <Button>Click me</Button>
       </div>
     )
   }

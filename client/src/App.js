@@ -12,15 +12,18 @@ import Challenge from './components/ChallengeComponent/Challenge';
 class App extends Component {
   render() {
     return (
+      <div>
+        <h1>Fat Camp</h1>
       <Router>
         <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/users' component={Home}/>
-          <Route exact path='/users/:userId' component={UserPage}/>
-          <Route exact path='/users/:userId/challenges' component={ChallengeList}/>
-          <Route exact path='/users/:userId/challenges/:id' component={Challenge}/>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/users' component={Home} />
+          <Route exact path='/users/:userId' component={UserPage} />
+          <Route exact path='/users/:userId/challenges' component={ChallengeList} />
+          <Route exact path='/users/:userId/challenges/:id' component={Challenge} />
         </Switch>
       </Router>
+      </div>
     );
   }
 }

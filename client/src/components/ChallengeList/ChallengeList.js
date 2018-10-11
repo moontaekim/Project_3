@@ -43,6 +43,10 @@ export default class ChallengeList extends Component {
     await axios.delete(`/api/challenges/${challengeId}`)
     await this.getFoodChallenges()
   }
+  goBackHome = () => {
+    const userId = this.props.match.params.userId
+    this.props.history.push(`/users/${userId}`)
+  }
 
   render() {
     const foodChallengeList = this.state.foodChallenges.map((foodChallenge, i) => {
@@ -62,6 +66,7 @@ export default class ChallengeList extends Component {
           newChallenge={this.state.newChallenge}
           handleChange={this.handleChange}
         />
+        <button onClick={() => { this.goBackHome() }}> go back </button>
       </div>
     )
   }

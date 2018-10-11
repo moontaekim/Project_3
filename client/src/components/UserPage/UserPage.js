@@ -41,7 +41,9 @@ export default class UserPage extends Component {
     event.preventDefault()
     await axios.put(`/api/users/${userId}`, this.state.user)
   }
-
+  goBackHome = () => {
+    this.props.history.push(`/users`)
+  }
   render() {
     const editUserForm = 
     <EditUserForm
@@ -67,6 +69,7 @@ export default class UserPage extends Component {
         <button onClick={this.toggleEditUser}>
           {this.state.editUser ? 'User Info' : 'Edit User'}
         </button>
+        <button onClick={() => {this.goBackHome()}}> go back </button>
       </div>
     )
   }
