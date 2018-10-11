@@ -83,7 +83,7 @@ const ramen = new FoodChallenge({
   name: '4 Bowl Ramen',
   location: 'Umaido Japanese Restaurant',
   address: '2790 Lawrenceville-Suwanee Rd, Ste #140',
-  img:'https://www.foodchallenges.com/wp-content/uploads/2015/06/casa-bariachi-240x180.jpg',
+  img:'https://www.foodchallenges.com/wp-content/uploads/2014/05/Umaido-240x179.jpg',
   state: 'GA',
   difficulty: 2,
   price: 20,
