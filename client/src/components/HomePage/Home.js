@@ -20,14 +20,14 @@ const StyledButton = styled(Button)`
 export default class Home extends Component {
   state = {
     users: [],
-    newUser: {
-      foodChallenges: [],
-      completedChallenges: [],
-      name: '',
-      budget: 500,
-      fatness: 0,
-      img: ''
-    },
+    // newUser: {
+    //   foodChallenges: [],
+    //   completedChallenges: [],
+    //   name: '',
+    //   budget: 500,
+    //   fatness: 0,
+    //   img: ''
+    // },
     createUser: false
   }
 
@@ -38,12 +38,6 @@ export default class Home extends Component {
 
   toggleCreateUser = () => {
     this.setState({ createUser: !this.state.createUser })
-  }
-
-  handleChange = (event) => {
-    const newUser = { ...this.state.newUser }
-    newUser[event.target.name] = event.target.value
-    this.setState({ newUser })
   }
 
   addUser = async (newUser) => {
