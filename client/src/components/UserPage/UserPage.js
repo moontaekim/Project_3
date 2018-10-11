@@ -15,8 +15,6 @@ const StyledButton = styled(Button)`
   }
 }
 `
-
-
 export default class UserPage extends Component {
   state = {
     user: {},
