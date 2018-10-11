@@ -8,6 +8,7 @@ import { Button } from 'semantic-ui-react'
 
 const StyledButton = styled(Button)`
 &&&{
+  margin-top:30px;
   background:white;
   box-shadow:3px 4px 1px black;
   :hover{
