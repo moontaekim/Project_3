@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card, CardContent, Image } from 'semantic-ui-react'
@@ -23,6 +24,11 @@ const StyledLink = styled(Link)`
 `
 
 export default class UserInfo extends Component {
+
+  handleDelete = async (userId) => {
+    await axios.delete(`/api/users/${userId}`)
+    await this.props.getUser()
+  }
   render() {
     return (
       <StyledCard>
@@ -34,7 +40,7 @@ export default class UserInfo extends Component {
         </CardContent>
         <StyledLink to={`/users/${this.props.user._id}/challenges`}>Food Challenges</StyledLink>
         <StyledLink to={`/users/`}> go back </StyledLink>
-        <StyledLink to="/users" onClick={() => this.props.handleDelete(this.props.user._id)}>delete</StyledLink>
+        <StyledLink to="/users" onClick={() => this.handleDelete(this.props.user._id)}>delete</StyledLink>
       </StyledCard>
     )
   }

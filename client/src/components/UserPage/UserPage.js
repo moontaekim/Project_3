@@ -22,7 +22,6 @@ export default class UserPage extends Component {
     editUser: false
   }
 
-
   getUser = async () => {
     const userId = this.props.match.params.userId
     const response = await axios.get(`/api/users/${userId}`)
@@ -41,10 +40,10 @@ export default class UserPage extends Component {
     this.setState({editUser: !this.state.editUser})
   }
 
-  handleDelete = async (userId) => {
-    await axios.delete(`/api/users/${userId}`)
-    await this.getUser()
-  }
+  // handleDelete = async (userId) => {
+  //   await axios.delete(`/api/users/${userId}`)
+  //   await this.getUser()
+  // }
   
   handleChange = (event) => {
     const user = {...this.state.user.name}
@@ -73,7 +72,8 @@ export default class UserPage extends Component {
     const userpage = 
     <div>
     <UserInfo
-    handleDelete={this.handleDelete}
+    getUser={this.getUser}
+    // handleDelete={this.handleDelete}
     user={this.state.user}
     goBackHome={this.goBackHome}
     fatness={fatness}
