@@ -14,11 +14,17 @@ export default class ChallengeList extends Component {
       price: '',
       state: '',
       time: ''
-    }
+    },
+    createChallenge: false
+
   }
 
   componentDidMount = async () => {
     await this.getFoodChallenges()
+  }
+
+  toggleCreateChallenge = () => {
+    this.setState({createChallenge: !this.state.createChallenge})
   }
 
   getFoodChallenges = async () => {
@@ -58,14 +64,21 @@ export default class ChallengeList extends Component {
       )
     })
 
+    const newChallengeForm = 
+      <NewChallengeForm
+        handleSubmit={this.handleSubmit}
+        newChallenge={this.state.newChallenge}
+        handleChange={this.handleChange}
+          /> 
+
     return (
       <div>
-        {foodChallengeList}
-        <NewChallengeForm
-          handleSubmit={this.handleSubmit}
-          newChallenge={this.state.newChallenge}
-          handleChange={this.handleChange}
-        />
+        {/* {foodChallengeList} */}
+        {this.state.createChallenge ? newChallengeForm : foodChallengeList }
+        <button onClick={this.toggleCreateChallenge}>
+          {this.state.createChallenge ? 'All Challenges' : 'Create Challenge'}
+        </button>
+        
         <button onClick={() => { this.goBackHome() }}> go back </button>
       </div>
     )
