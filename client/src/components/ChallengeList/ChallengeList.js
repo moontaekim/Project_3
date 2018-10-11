@@ -46,7 +46,6 @@ export default class ChallengeList extends Component {
   }
 
   handleDelete = async (challengeId) => {
-    console.log(challengeId)
     await axios.delete(`/api/challenges/${challengeId}`)
     await this.getFoodChallenges()
   }

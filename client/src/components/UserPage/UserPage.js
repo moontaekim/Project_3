@@ -6,6 +6,16 @@ import EditUserForm from './EditUserForm';
 import styled from 'styled-components'
 import {Button} from 'semantic-ui-react'
 
+const StyledButton = styled(Button)`
+&&&{
+  background:white;
+  box-shadow:3px 4px 1px black;
+  :hover{
+    box-shadow: 0 0 0 white;
+  }
+}
+`
+
 
 export default class UserPage extends Component {
   state = {
@@ -49,6 +59,9 @@ export default class UserPage extends Component {
     this.props.history.push(`/users`)
   }
   render() {
+
+    const fatness = this.state.completedChallenges.map((challenge) => challenge.fatness_points).reduce((acc, curVal) => acc += curVal, 0)
+    
     const editUserForm = 
     <EditUserForm
     handleSubmit={this.handleSubmit}
@@ -62,6 +75,7 @@ export default class UserPage extends Component {
     handleDelete={this.handleDelete}
     user={this.state.user}
     goBackHome={this.goBackHome}
+    fatness={fatness}
     />
     <UserCompletedChallenges
     completedChallenges={this.state.completedChallenges}
@@ -71,9 +85,9 @@ export default class UserPage extends Component {
     return (
       <div>
         {this.state.editUser ? editUserForm : userpage}
-        <Button onClick={this.toggleEditUser}>
+        <StyledButton circular onClick={this.toggleEditUser}>
           {this.state.editUser ? 'User Info' : 'Edit User'}
-        </Button>
+        </StyledButton>
       </div>
     )
   }
