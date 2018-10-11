@@ -46,6 +46,50 @@ const bigPie = new FoodChallenge({
   time: 60
 })
 
+const screamNuts = new FoodChallenge({
+  name: 'Are You Scream’N Nuts?',
+  location: 'Screamin Nuts',
+  address: '5950 North Point Pkwy',
+  img:'https://www.foodchallenges.com/wp-content/uploads/2017/12/donuts-e1512756735519.jpg',
+  state: 'GA',
+  difficulty: 5,
+  price: 48,
+  time: 30
+})
+
+const totcho = new FoodChallenge({
+  name: 'Macho Totcho',
+  location: 'The Nook',
+  address: '1144 Piedmont Ave NE',
+  img:'https://www.foodchallenges.com/wp-content/uploads/2017/08/The-Nooks-Macho-Tatcho-Challenge-e1504149950238.jpg',
+  state: 'GA',
+  difficulty: 3,
+  price: 35,
+  time: 90
+})
+
+const bigBurrito = new FoodChallenge({
+  name: '5lb Big Burrito',
+  location: 'Casa Bariachi',
+  address: '107 Market Center',
+  img:'https://www.foodchallenges.com/wp-content/uploads/2015/06/casa-bariachi-240x180.jpg',
+  state: 'GA',
+  difficulty: 3,
+  price: 12,
+  time: 20
+})
+
+const ramen = new FoodChallenge({
+  name: '4 Bowl Ramen',
+  location: 'Umaido Japanese Restaurant',
+  address: '2790 Lawrenceville-Suwanee Rd, Ste #140',
+  img:'https://www.foodchallenges.com/wp-content/uploads/2015/06/casa-bariachi-240x180.jpg',
+  state: 'GA',
+  difficulty: 2,
+  price: 20,
+  time: 15
+})
+
 const saved = async () => {
   await User.deleteMany()
   await FoodChallenge.deleteMany()
@@ -54,12 +98,33 @@ const saved = async () => {
   const userTwo = await taylor.save()
   const foodchallenge = await vortex.save()
   const foodchallengeTwo = await bigPie.save()
+  const foodchallengeThree = await screamNuts.save()
+  const foodchallengeFour = await totcho.save()
+  const foodchallengeFive = await bigBurrito.save()
+  const foodchallengeSix = await ramen.save()
+
+
+
   
   user.foodChallenges.push(foodchallenge._id)
   user.foodChallenges.push(foodchallengeTwo._id)
+  user.foodChallenges.push(foodchallengeThree._id)
+  user.foodChallenges.push(foodchallengeFour._id)
+  user.foodChallenges.push(foodchallengeFive._id)
+  user.foodChallenges.push(foodchallengeSix._id)
+
+
+
  
   userTwo.foodChallenges.push(foodchallenge._id)
   userTwo.foodChallenges.push(foodchallengeTwo._id)
+  userTwo.foodChallenges.push(foodchallengeThree._id)
+  userTwo.foodChallenges.push(foodchallengeFour._id)
+  userTwo.foodChallenges.push(foodchallengeFive._id)
+  userTwo.foodChallenges.push(foodchallengeSix._id)
+
+
+
 
   await user.save()
   await userTwo.save()
