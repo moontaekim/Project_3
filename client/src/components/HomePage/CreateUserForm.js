@@ -23,7 +23,7 @@ export default class CreateUserForm extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <Input focus type="text" name="name" value={this.state.newUser.name} onChange={this.handleChange}/>
-          <input type='submit' value='Create New Fatty'/>
+          <Input type='submit' value='Create New Fatty'/>
         </form>
       </div>
     )
