@@ -3,6 +3,17 @@ import axios from 'axios'
 import UserNameList from './UserNameList';
 import CreateUserForm from './CreateUserForm';
 import styled from 'styled-components'
+import { Button } from 'semantic-ui-react'
+
+const StyledButton = styled(Button)`
+&&&{
+  background:white;
+  box-shadow:3px 4px 1px black;
+  :hover{
+    box-shadow: 0 0 0 white;
+  }
+}
+`
 
 
 export default class Home extends Component {
@@ -60,9 +71,9 @@ export default class Home extends Component {
     return (
       <div>
         {this.state.createUser ? createUserForm : userNameList}
-        <button onClick={this.toggleCreateUser}>
+        <StyledButton circular onClick={this.toggleCreateUser}>
         {this.state.createUser ? 'Users' : 'Create User'}
-        </button>
+        </StyledButton>
       </div>
     )
   }

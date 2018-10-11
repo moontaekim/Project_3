@@ -4,8 +4,7 @@ import UserInfo from './UserInfo';
 import UserCompletedChallenges from './UserCompletedChallenges';
 import EditUserForm from './EditUserForm';
 import styled from 'styled-components'
-import { Container } from 'semantic-ui-react'
-
+import {Button} from 'semantic-ui-react'
 
 
 export default class UserPage extends Component {
@@ -72,9 +71,9 @@ export default class UserPage extends Component {
     return (
       <div>
         {this.state.editUser ? editUserForm : userpage}
-        <button onClick={this.toggleEditUser}>
+        <Button onClick={this.toggleEditUser}>
           {this.state.editUser ? 'User Info' : 'Edit User'}
-        </button>
+        </Button>
       </div>
     )
   }
