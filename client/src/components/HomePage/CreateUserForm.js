@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Input } from 'semantic-ui-react'
 
+
 export default class CreateUserForm extends Component {
   state = {
     newUser: {}
