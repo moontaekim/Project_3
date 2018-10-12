@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Input } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const StyledButton = styled(Button)`
@@ -12,12 +12,15 @@ const StyledButton = styled(Button)`
   }
 }
 `
-
+const StyledForm = styled(Form)`
+  width: 70%;
+  margin: auto;
+`
 export default class NewChallengeForm extends Component {
   render() {
     return (
       <div>
-        <Form onSubmit={this.props.handleSubmit}>
+        <StyledForm onSubmit={this.props.handleSubmit}>
           <input type="text" placeholder= "name" name="name" value={this.props.newChallenge.name} onChange={this.props.handleChange}/>
           <input type="text" placeholder= "location" name="location" value={this.props.newChallenge.location} onChange={this.props.handleChange}/>
           <input type="text" placeholder= "Image URL" name="img" value={this.props.newChallenge.img} onChange={this.props.handleChange}/>
@@ -27,7 +30,7 @@ export default class NewChallengeForm extends Component {
           <input type="text" placeholder= "state" name="state" value={this.props.newChallenge.state} onChange={this.props.handleChange}/>
           <input type="text" placeholder= "time" name="time" value={this.props.newChallenge.time} onChange={this.props.handleChange}/>
           <StyledButton circular type='submit'>Create New Challenge</StyledButton>
-        </Form>
+        </StyledForm>
       </div>
     )
   }

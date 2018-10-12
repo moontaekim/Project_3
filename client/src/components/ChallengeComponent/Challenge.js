@@ -42,17 +42,17 @@ addToComplete = async () => {
   this.goBackToUser()
 }
 
-//why do i have to click failed twice for it to update and save??
-failedChallenge =  async (event) => {
-  event.preventDefault()
-  const failedChallenge = {...this.state.foodChallenge}
-  failedChallenge.failed = !failedChallenge.failed
-  this.setState({foodChallenge: failedChallenge})
-  const userId = this.props.match.params.userId
-  const challengeId = this.props.match.params.id
-  console.log(this.state.foodChallenge)
-  await axios.put(`/api/users/${userId}/challenges/${challengeId}`, this.state.foodChallenge)
-}
+//why do i have to click failed twice for it to update and save?? Ill work on this on my own time
+// failedChallenge =  async (event) => {
+//   event.preventDefault()
+//   const failedChallenge = {...this.state.foodChallenge}
+//   failedChallenge.failed = !failedChallenge.failed
+//   this.setState({foodChallenge: failedChallenge})
+//   const userId = this.props.match.params.userId
+//   const challengeId = this.props.match.params.id
+//   console.log(this.state.foodChallenge)
+//   await axios.put(`/api/users/${userId}/challenges/${challengeId}`, this.state.foodChallenge)
+// }
 
 goBackToUser = () => {
   const userId = this.props.match.params.userId
@@ -75,7 +75,7 @@ render() {
       <ChallengeDetails
         foodChallenge={this.state.foodChallenge}
         addToComplete={this.addToComplete}
-        failedChallenge={this.failedChallenge}
+        // failedChallenge={this.failedChallenge}
       />
       <Timer
         foodChallenge={this.state.foodChallenge}
