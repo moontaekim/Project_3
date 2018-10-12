@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Card, CardContent, Image } from 'semantic-ui-react'
+import swal from 'sweetalert'
+import { withRouter } from 'react-router-dom'
 
 const CardName = styled(Card.Header)`
   &&&{
@@ -23,17 +25,35 @@ const StyledLink = styled(Link)`
 }
 `
 
-export default class UserInfo extends Component {
+class UserInfo extends Component {
 
   handleDelete = async (userId) => {
-    await axios.delete(`/api/users/${userId}`)
-    await this.props.getUser()
+    swal({
+      title: "Are You Sure?!",
+      text: "You are about to delete all your hard work!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal('Success!', { icon: "success" })
+            .then( async () => {
+              await axios.delete(`/api/users/${userId}`)
+              this.props.history.push('/')
+            })
+        } else {
+          swal("Good call! Keep eating fatty.");
+        }
+      })
   }
+
+
 
   render() {
     return (
       <StyledCard>
-        <Image src="https://img.clipartxtras.com/fb348ffcc0c931a4c600fedbd96403ba_thin-fat-cliparts-free-download-clip-art-free-clip-art-on-fat-and-thin-clipart-black-and-white_1512-1111.jpeg"/>
+        <Image src="https://img.clipartxtras.com/fb348ffcc0c931a4c600fedbd96403ba_thin-fat-cliparts-free-download-clip-art-free-clip-art-on-fat-and-thin-clipart-black-and-white_1512-1111.jpeg" />
         <CardContent>
           <CardName>{this.props.user.name}</CardName>
           <Card.Description>Budget: $ {this.props.user.budget}</Card.Description>
@@ -41,8 +61,11 @@ export default class UserInfo extends Component {
         </CardContent>
         <StyledLink to={`/users/${this.props.user._id}/challenges`}>Food Challenges</StyledLink>
         <StyledLink to={`/users/`}> go back </StyledLink>
-        <StyledLink to="/users" onClick={() => this.handleDelete(this.props.user._id)}>delete</StyledLink>
+        <button onClick={() => this.handleDelete(this.props.user._id)}>delete</button>
       </StyledCard>
     )
   }
 }
+
+
+export default withRouter(UserInfo)
