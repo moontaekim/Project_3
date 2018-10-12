@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Timer from './Timer/Timer';
-import StartButton from './Timer/StartButton';
 import ChallengeDetails from './ChallengeDetails';
 import { Button, Image } from 'semantic-ui-react'
 import styled from 'styled-components'
 
 const StyledButton = styled(Button)`
 &&&{
-  margin-top:30px;
+  margin-top:15px;
   background:white;
   box-shadow:3px 4px 1px black;
   :hover{
@@ -21,16 +20,14 @@ const StyledImage = styled(Image)`
   border: 3px solid white;
 `
 
-
 export default class Challenge extends Component {
 
   state = {
     foodChallenge: [],
-    completedChallenge: [],
+    // completedChallenge: [],
     seconds: "00",
-    minutes: ''
+    // minutes: ''
   }
-
 
 componentDidMount = async () => {
   const challengeId = this.props.match.params.id
@@ -65,7 +62,7 @@ render() {
       <Timer
         foodChallenge={this.state.foodChallenge}
         seconds={this.state.seconds} />
-      <StartButton/>
+      {/* <StartButton/> */}
       <StyledButton circular onClick={() => { this.goBackHome() }}> go back </StyledButton>
       <StyledButton circular onClick={() => this.handleDelete(this.state.foodChallenge._id)}>delete</StyledButton>
     </div>

@@ -41,7 +41,6 @@ export default class ChallengeList extends Component {
     this.props.history.push(`/users/${userId}`)
   }
 
-
   toggleCreateChallenge = () => {
     this.setState({ createChallenge: !this.state.createChallenge })
   }
@@ -64,10 +63,7 @@ export default class ChallengeList extends Component {
     this.toggleCreateChallenge()
   }
 
- 
-
   render() {
-
 
     const foodChallengeList = <ChallengeInfo
       userId={this.props.match.params.userId}

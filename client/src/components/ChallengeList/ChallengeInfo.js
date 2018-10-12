@@ -27,6 +27,7 @@ const StyledButton = styled(Button)`
 `
 
 export default class ChallengeInfo extends Component {
+
   render() {
     const foodChallengeList = this.props.foodChallenges.map((foodChallenge, i) => {
       return (

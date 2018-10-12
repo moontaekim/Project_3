@@ -19,17 +19,28 @@ export default class UserPage extends Component {
   state = {
     user: {},
     completedChallenges: [],
+    failedChallenges:["asdfa"],
     editUser: false
   }
 
   getUser = async () => {
     const userId = this.props.match.params.userId
     const response = await axios.get(`/api/users/${userId}`)
-    this.setState({user: response.data, completedChallenges: response.data.completedChallenges})
+    this.setState({
+      user: response.data, 
+      completedChallenges: response.data.completedChallenges
+    })
+  }
+
+  failedChallengesList = async () => {
+    const response = await axios.get(`/api/challenges`)
+    console.log(response)
+    this.setState({failedChallenges: response.data.price})
   }
 
   componentDidMount = () => {
     this.getUser()
+    this.failedChallengesList()
     }
 
   goBackHome = () => {
@@ -39,11 +50,6 @@ export default class UserPage extends Component {
   toggleEditUser = () => {
     this.setState({editUser: !this.state.editUser})
   }
-
-  // handleDelete = async (userId) => {
-  //   await axios.delete(`/api/users/${userId}`)
-  //   await this.getUser()
-  // }
   
   handleChange = (event) => {
     const user = {...this.state.user.name}
@@ -61,7 +67,8 @@ export default class UserPage extends Component {
   render() {
 
     const fatness = this.state.completedChallenges.map((challenge) => challenge.fatness_points).reduce((acc, curVal) => acc += curVal, 0)
-    
+    const money = this.state.completedChallenges.map((challenge) => challenge.price)
+
     const editUserForm = 
     <EditUserForm
     handleSubmit={this.handleSubmit}
@@ -72,11 +79,9 @@ export default class UserPage extends Component {
     const userpage = 
     <div>
     <UserInfo
-    getUser={this.getUser}
-    // handleDelete={this.handleDelete}
     user={this.state.user}
-    goBackHome={this.goBackHome}
     fatness={fatness}
+    getUser={this.getUser}
     />
     <UserCompletedChallenges
     completedChallenges={this.state.completedChallenges}

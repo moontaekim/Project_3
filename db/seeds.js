@@ -12,7 +12,8 @@ const moon = new User({
   fatness: 0,
   img: '',
   foodChallenges: [],
-  completedChallenges: []
+  completedChallenges: [],
+  failedChallenges: []
 })
 
 const taylor = new User({
@@ -21,7 +22,8 @@ const taylor = new User({
   fatness: 0,
   img: '',
   foodChallenges: [],
-  completedChallenges: []
+  completedChallenges: [],
+  failedChallenges: []
 })
 
 const vortex = new FoodChallenge({

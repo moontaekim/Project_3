@@ -29,6 +29,7 @@ export default class UserInfo extends Component {
     await axios.delete(`/api/users/${userId}`)
     await this.props.getUser()
   }
+
   render() {
     return (
       <StyledCard>

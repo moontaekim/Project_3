@@ -9,7 +9,8 @@ const UserSchema = new Schema({
   fatness: Number,
   img: String,
   foodChallenges : [{ type: Schema.Types.ObjectId, ref: 'FoodChallenge'}],
-  completedChallenges: [{ type: Schema.Types.ObjectId, ref: 'FoodChallenge'}]
+  completedChallenges: [{ type: Schema.Types.ObjectId, ref: 'FoodChallenge'}],
+  failedChallenges: [{ type: Schema.Types.ObjectId, ref: 'FoodChallenge'}]
 })
 
 const FoodChallengeSchema = new Schema({

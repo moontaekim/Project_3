@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Input } from 'semantic-ui-react'
 
 export default class EditUserForm extends Component {
+  
   render() {
     return (
       <div>
