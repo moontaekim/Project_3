@@ -5,7 +5,7 @@ Who doesn't love eating? Are you a fan of Man vs Food? Fat Camp is an applicatio
 
 
 ## ERD
-https://github.com/moontaekim/Project-2/blob/master/ERD.jpeg
+[erd]('')
 
 ## Wire Frame
 https://github.com/moontaekim/Project-2/blob/master/WireFrame.jpeg
