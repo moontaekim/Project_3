@@ -8,7 +8,6 @@ const db = mongoose.connection
 
 const moon = new User({
   name: 'Moon', 
-  budget: 500,
   fatness: 0,
   img: '',
   foodChallenges: [],
@@ -17,7 +16,6 @@ const moon = new User({
 
 const taylor = new User({
   name: 'Taylor',
-  budget: 500,
   fatness: 0,
   img: '',
   foodChallenges: [],

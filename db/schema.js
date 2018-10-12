@@ -5,7 +5,6 @@ const Schema = require('mongoose').Schema
 
 const UserSchema = new Schema({
   name: String,
-  budget: Number,
   fatness: Number,
   img: String,
   foodChallenges : [{ type: Schema.Types.ObjectId, ref: 'FoodChallenge'}],

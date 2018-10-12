@@ -56,7 +56,6 @@ class UserInfo extends Component {
         <Image src="https://img.clipartxtras.com/fb348ffcc0c931a4c600fedbd96403ba_thin-fat-cliparts-free-download-clip-art-free-clip-art-on-fat-and-thin-clipart-black-and-white_1512-1111.jpeg" />
         <CardContent>
           <CardName>{this.props.user.name}</CardName>
-          <Card.Description>Budget: $ {this.props.user.budget}</Card.Description>
           <Card.Description>Fatness: {this.props.fatness}</Card.Description>
         </CardContent>
         <StyledLink to={`/users/${this.props.user._id}/challenges`}>Food Challenges</StyledLink>
