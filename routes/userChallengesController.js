@@ -27,7 +27,11 @@ router.post('/:id', async(req, res) => {
 
 router.put('/:id', async (req, res) => {
   const user = await User.findById(req.params.userId)
-  const failedChallenge = await FoodChallenge.findByIdAndUpdate(req.params.id, req.body, {new:true})
+  const foodChallenges = user.foodChallenges
+  const foodChallenge = foodChallenges.map((challenge) => {
+    return challenge._id
+  })
+  const failedChallenge = await FoodChallenge.findByIdAndUpdate(foodChallenge, req.body, {new:true})
 
   res.send(failedChallenge)
 })
