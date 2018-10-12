@@ -5,35 +5,33 @@ Who doesn't love eating? Are you a fan of Man vs Food? Fat Camp is an applicatio
 
 
 ## ERD
-[erd]('')
+![alt text](https://i.imgur.com/EnqJrVz.jpg)
 
 ## Wire Frame
-https://github.com/moontaekim/Project-2/blob/master/WireFrame.jpeg
+![alt text](https://i.imgur.com/TwgKphv.jpg?1)
 
+## Links
 
-## Heroku
+[Heroku](https://project-threeeee.herokuapp.com/)
 
-https://murmuring-hamlet-79842.herokuapp.com/guitarists
+[Trello](https://trello.com/b/exTddhVM/project-3)
 
-## Trello
-
-https://trello.com/b/FJCkadPA/project-2
-
-## GitHub
-
-https://github.com/moontaekim/Project-2
+[GitHub](https://github.com/moontaekim/Project_3)
 
 ## Tech Used
 1. HTML
 2. CSS
 3. JavaScript
-4. Handlebars
+4. React
 5. Express
 6. MongoDB
 7. Mongoose
 8. Semantic IU
 9. VS Code
+10. Node
 
 ## Future Updates
 
-I would like to implement an alert before anything is deleted. I would also like to make the gears detail page a module instead of directing to a new page.
+* Timer function for chllenge
+* Add challenges from different states
+* Include a budget that will add the price of the challenge if you complete and subtract if you fail
