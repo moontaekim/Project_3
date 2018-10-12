@@ -32,7 +32,6 @@ export default class Challenge extends Component {
 componentDidMount = async () => {
   const challengeId = this.props.match.params.id
   const response = await axios.get(`/api/challenges/${challengeId}`)
-  console.log(response.data)
   this.setState({ foodChallenge: response.data, minutes: response.data.time })
 }
 
@@ -40,6 +39,17 @@ addToComplete = async () => {
   const userId = this.props.match.params.userId
   const challengeId = this.props.match.params.id
   await axios.post(`/api/users/${userId}/challenges/${challengeId}`, challengeId)
+}
+
+failedChallenge =  async () => {
+  const failedChallenge = {...this.state.foodChallenge}
+  failedChallenge.failed = !failedChallenge.failed
+  this.setState({foodChallenge: failedChallenge})
+  const userId = this.props.match.params.userId
+  const challengeId = this.props.match.params.id
+  await axios.put(`/api/users/${userId}/challenges/${challengeId}`, this.state.foodChallenge)
+  console.log(this.state.foodChallenge)
+
 }
 
 goBackHome = () => {
@@ -58,6 +68,7 @@ render() {
       <ChallengeDetails
         foodChallenge={this.state.foodChallenge}
         addToComplete={this.addToComplete}
+        failedChallenge={this.failedChallenge}
       />
       <Timer
         foodChallenge={this.state.foodChallenge}

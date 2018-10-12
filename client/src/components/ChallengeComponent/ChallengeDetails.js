@@ -21,7 +21,7 @@ export default class ChallengeDetails extends Component {
         <div>Fatness Points: {foodChallenge.fatness_points}</div>
         <div>Price: $ {foodChallenge.price}</div>
         <button onClick={this.props.addToComplete}>complete</button>
-        <button>failed</button>
+        <button onClick={this.props.failedChallenge}>failed</button>
       </div>
     )
   }

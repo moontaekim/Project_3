@@ -12,8 +12,7 @@ const moon = new User({
   fatness: 0,
   img: '',
   foodChallenges: [],
-  completedChallenges: [],
-  failedChallenges: []
+  completedChallenges: []
 })
 
 const taylor = new User({
@@ -22,8 +21,7 @@ const taylor = new User({
   fatness: 0,
   img: '',
   foodChallenges: [],
-  completedChallenges: [],
-  failedChallenges: []
+  completedChallenges: []
 })
 
 const vortex = new FoodChallenge({
@@ -34,7 +32,8 @@ const vortex = new FoodChallenge({
   state: 'GA',
   fatness_points: 3,
   price: 80,
-  time: 30
+  time: 30,
+  failed: false
 })
 
 const bigPie = new FoodChallenge({
@@ -45,7 +44,8 @@ const bigPie = new FoodChallenge({
   state: 'GA',
   fatness_points: 2,
   price: 50,
-  time: 60
+  time: 60,
+  failed: false
 })
 
 const screamNuts = new FoodChallenge({
@@ -56,7 +56,9 @@ const screamNuts = new FoodChallenge({
   state: 'GA',
   fatness_points: 5,
   price: 48,
-  time: 30
+  time: 30,
+  failed: false
+
 })
 
 const totcho = new FoodChallenge({
@@ -67,7 +69,9 @@ const totcho = new FoodChallenge({
   state: 'GA',
   fatness_points: 3,
   price: 35,
-  time: 90
+  time: 90,
+  failed: false
+
 })
 
 const bigBurrito = new FoodChallenge({
@@ -78,7 +82,9 @@ const bigBurrito = new FoodChallenge({
   state: 'GA',
   fatness_points: 3,
   price: 12,
-  time: 20
+  time: 20,
+  failed: false
+
 })
 
 const ramen = new FoodChallenge({
@@ -89,7 +95,9 @@ const ramen = new FoodChallenge({
   state: 'GA',
   fatness_points: 2,
   price: 20,
-  time: 15
+  time: 15,
+  failed: false
+
 })
 
 const saved = async () => {
