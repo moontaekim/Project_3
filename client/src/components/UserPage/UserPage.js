@@ -59,12 +59,6 @@ export default class UserPage extends Component {
     this.setState({editUser: !this.state.editUser})
   }
   
-  handleChange = (event) => {
-    const user = {...this.state.user.name}
-    user[event.target.name]= event.target.value
-    this.setState({ user })
-  }
-  
   handleSubmit = async (event) => {
     const userId = this.props.match.params.userId
     event.preventDefault()
@@ -78,8 +72,6 @@ export default class UserPage extends Component {
     const editUserForm = 
     <EditUserForm
     handleSubmit={this.handleSubmit}
-    user={this.state.user}
-    handleChange={this.handleChange}
     />
 
     const userpage = 
