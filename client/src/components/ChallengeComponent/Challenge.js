@@ -39,17 +39,24 @@ addToComplete = async () => {
   const userId = this.props.match.params.userId
   const challengeId = this.props.match.params.id
   await axios.post(`/api/users/${userId}/challenges/${challengeId}`, challengeId)
+  this.goBackToUser()
 }
 
-failedChallenge =  async () => {
+//why do i have to click failed twice for it to update and save??
+failedChallenge =  async (event) => {
+  event.preventDefault()
   const failedChallenge = {...this.state.foodChallenge}
   failedChallenge.failed = !failedChallenge.failed
   this.setState({foodChallenge: failedChallenge})
   const userId = this.props.match.params.userId
   const challengeId = this.props.match.params.id
-  await axios.put(`/api/users/${userId}/challenges/${challengeId}`, this.state.foodChallenge)
   console.log(this.state.foodChallenge)
+  await axios.put(`/api/users/${userId}/challenges/${challengeId}`, this.state.foodChallenge)
+}
 
+goBackToUser = () => {
+  const userId = this.props.match.params.userId
+  this.props.history.push(`/users/${userId}`)
 }
 
 goBackHome = () => {

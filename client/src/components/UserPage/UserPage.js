@@ -19,6 +19,7 @@ export default class UserPage extends Component {
   state = {
     user: {},
     completedChallenges: [],
+    failedChallenges: [],
     editUser: false
   }
 
@@ -31,8 +32,21 @@ export default class UserPage extends Component {
     })
   }
 
+  failedChallenges = async() => {
+    const userId = this.props.match.params.userId
+    const response = await axios.get(`/api/users/${userId}`)
+    const hello = response.data.foodChallenges.map( (challenge) => {
+      return  axios.get(`/api/user/${userId}/challenges/${challenge}`)   
+     })
+    //get challenge information based on Id
+    //if there is a failed = true then push that into failedChallenges array
+    // await axios.get(`/api/user/${userId}/challenges/${hello}`)
+    console.log(hello)
+  }
+
   componentDidMount = () => {
     this.getUser()
+    this.failedChallenges()
     }
 
   goBackHome = () => {
@@ -57,7 +71,6 @@ export default class UserPage extends Component {
   }
  
   render() {
-
     const fatness = this.state.completedChallenges.map((challenge) => challenge.fatness_points).reduce((acc, curVal) => acc += curVal, 0)
 
     const editUserForm = 
