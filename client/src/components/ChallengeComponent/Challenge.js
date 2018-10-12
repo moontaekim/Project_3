@@ -24,9 +24,7 @@ export default class Challenge extends Component {
 
   state = {
     foodChallenge: [],
-    // completedChallenge: [],
     seconds: "00",
-    // minutes: ''
   }
 
 componentDidMount = async () => {
@@ -41,18 +39,6 @@ addToComplete = async () => {
   await axios.post(`/api/users/${userId}/challenges/${challengeId}`, challengeId)
   this.goBackToUser()
 }
-
-//why do i have to click failed twice for it to update and save?? Ill work on this on my own time
-// failedChallenge =  async (event) => {
-//   event.preventDefault()
-//   const failedChallenge = {...this.state.foodChallenge}
-//   failedChallenge.failed = !failedChallenge.failed
-//   this.setState({foodChallenge: failedChallenge})
-//   const userId = this.props.match.params.userId
-//   const challengeId = this.props.match.params.id
-//   console.log(this.state.foodChallenge)
-//   await axios.put(`/api/users/${userId}/challenges/${challengeId}`, this.state.foodChallenge)
-// }
 
 goBackToUser = () => {
   const userId = this.props.match.params.userId
@@ -75,12 +61,10 @@ render() {
       <ChallengeDetails
         foodChallenge={this.state.foodChallenge}
         addToComplete={this.addToComplete}
-        // failedChallenge={this.failedChallenge}
       />
       <Timer
         foodChallenge={this.state.foodChallenge}
         seconds={this.state.seconds} />
-      {/* <StartButton/> */}
       <StyledButton circular onClick={() => { this.goBackHome() }}> go back </StyledButton>
       <StyledButton circular onClick={() => this.handleDelete(this.state.foodChallenge._id)}>delete</StyledButton>
     </div>
